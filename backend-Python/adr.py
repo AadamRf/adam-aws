@@ -27,5 +27,14 @@ def delete_employee(employee_id):
             return jsonify({'message': 'Employee deleted successfully.'}), 200
     return jsonify({'error': 'Employee not found.'}), 404
 
+@app.route('/api/v1/employees/<int:employee_id>', methods=['PUT'])
+def update_employee(employee_id):
+    for employee in employees:
+        if employee['id'] == employee_id:
+            updated_employee = request.json
+            employee.update(updated_employee)
+            return jsonify(employee), 200
+    return jsonify({'error': 'Employee not found.'}), 404
+
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
