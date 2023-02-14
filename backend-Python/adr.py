@@ -19,7 +19,7 @@ def add_employee():
     employees.append(new_employee)
     return jsonify(new_employee), 201
 
-@app.route('/api/v1/employees', methods=['DELETE'])
+@app.route('/api/v1/employees/<int:id>', methods=['DELETE'])
 def delete_employee(employee_id):
     for employee in employees:
         if employee['id'] == employee_id:
