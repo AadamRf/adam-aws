@@ -15,6 +15,13 @@ employees = [
 def get_employees():
     return jsonify(employees)
 
+@app.route('/api/v1/employees-detail/<int:employee_id>', methods=['GET'])
+def get_employee_details(employee_id):
+    for employee in employees:
+        if employee['id'] == employee_id:
+            return jsonify(employee)
+    return jsonify({'error': 'Employee not found.'}), 404
+
 @app.route('/api/v1/employees', methods=['POST'])
 def add_employee():
     new_employee = request.json
