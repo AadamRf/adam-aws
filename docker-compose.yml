@@ -1,0 +1,14 @@
+version: '2.1'
+services:
+  frontend:
+    build:
+      context: ./angular
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+  backend:
+    build:
+      context: ./backend-python
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
